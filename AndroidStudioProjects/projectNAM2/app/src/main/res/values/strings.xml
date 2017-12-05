@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">projectNAM</string>
+    <string name="grid_header">How do you feel?</string>
 </resources>
