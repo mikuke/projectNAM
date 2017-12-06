@@ -11,28 +11,32 @@ import android.view.ViewGroup;
 
 import com.example.andrus.projectnam.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MainScreenFragment extends Fragment {
-    private RecyclerView mainRecyclerView;
+    @BindView(R.id.fragmentMainScreen_recyclerView)
+    RecyclerView mainRecyclerView;
     RecyclerView.LayoutManager mainLayoutManager;
     RecyclerView.Adapter mainAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
         return inflater.inflate(R.layout.fragment_main_screen, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initialize(view);
+        ButterKnife.bind(this, view);
+
+        initialize();
         showGrid();
     }
 
-    private void initialize(View view) {
-        mainRecyclerView = view.findViewById(R.id.fragmentMainScreen_recyclerView);
+    private void initialize() {
         mainLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         mainAdapter = new MainScreenGridAdapter();
     }

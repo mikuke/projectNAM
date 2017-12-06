@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.example.andrus.projectnam.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MainScreenGridAdapter extends RecyclerView.Adapter<MainScreenGridAdapter.GridView> {
 
@@ -23,7 +26,6 @@ public class MainScreenGridAdapter extends RecyclerView.Adapter<MainScreenGridAd
 
     @Override
     public void onBindViewHolder(GridView holder, int position) {
-        //TODO JSON image and text
     }
 
     @Override
@@ -32,13 +34,14 @@ public class MainScreenGridAdapter extends RecyclerView.Adapter<MainScreenGridAd
     }
 
     public class GridView extends RecyclerView.ViewHolder {
+        @BindView(R.id.adapterMainScreen_moodIcon)
         ImageView moodIcon;
+        @BindView(R.id.adapterMainScreen_moodText)
         TextView moodText;
 
         public GridView(View itemView) {
             super(itemView);
-            moodIcon = itemView.findViewById(R.id.adapterMainScreen_moodIcon);
-            moodText = itemView.findViewById(R.id.adapterMainScreen_moodText);
+            ButterKnife.bind(this, itemView);
         }
     }
 }
