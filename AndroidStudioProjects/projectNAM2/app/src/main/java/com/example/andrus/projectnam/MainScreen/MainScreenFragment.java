@@ -31,16 +31,12 @@ public class MainScreenFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        adapterAndLayoutSetup();
-        adapterAndLayoutCommit();
+        showGrid();
     }
 
-    private void adapterAndLayoutSetup() {
+    private void showGrid() {
         mainLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         mainAdapter = new MainScreenGridAdapter();
-    }
-
-    private void adapterAndLayoutCommit() {
         mainRecyclerView.setLayoutManager(mainLayoutManager);
         mainRecyclerView.setAdapter(mainAdapter);
     }
