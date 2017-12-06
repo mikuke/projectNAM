@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/fragmentDetailThirsty_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="Second beer for free"
+        android:textColor="@color/darkRed"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/fragmentDetailThirsty_deal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragmentDetailThirsty_header"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="100dp"
+        android:text="If you stay long enough, you'll get another beer for free!"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="100dp" />
+
+    <TextView
+        android:id="@+id/fragmentDetailThirsty_advertisement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/fragmentDetailThirsty_deal"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginRight="20dp"
+        android:gravity="end"
+        android:text="Okasteta Siil just 2 min walk"
+        android:textColor="@color/darkRed"
+        android:textSize="20sp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="180dp"
+        android:layout_marginEnd="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/button_like_white"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:drawablePadding="6dp"
+        android:text="I like it!"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/ic_action_name" />
+
+
+    <!--<com.example.andrus.projectnam.CustomViews.DetailLikeButton-->
+    <!--android:id="@+id/fragmentDetailThirsty_buttonIcon"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_gravity="center" />-->
+
+</RelativeLayout>

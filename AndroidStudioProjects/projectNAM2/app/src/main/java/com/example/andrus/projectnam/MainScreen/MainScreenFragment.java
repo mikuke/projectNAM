@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,6 +23,7 @@ public class MainScreenFragment extends Fragment {
     RecyclerView mainRecyclerView;
     RecyclerView.LayoutManager mainLayoutManager;
     RecyclerView.Adapter mainAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +39,9 @@ public class MainScreenFragment extends Fragment {
     }
 
     private void showGrid() {
+        String[] windows = {"Thirsty", "Hungry", "Sleepy", "Fuel"};
         mainLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
-        mainAdapter = new MainScreenGridAdapter();
+        mainAdapter = new MainScreenGridAdapter(windows, (MainActivity) getActivity());
         mainRecyclerView.setLayoutManager(mainLayoutManager);
         mainRecyclerView.setAdapter(mainAdapter);
     }
