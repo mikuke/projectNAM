@@ -16,6 +16,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/adapterMainScreen_moodIcon"
         android:layout_centerHorizontal="true"
-        android:text="Mood"
         android:layout_marginBottom="45dp"/>
 </RelativeLayout>

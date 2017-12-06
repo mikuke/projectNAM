@@ -26,7 +26,7 @@ public class MainScreenGridAdapter extends RecyclerView.Adapter<MainScreenGridAd
 
     @Override
     public void onBindViewHolder(GridView holder, int position) {
-        //Update
+        holder.moodText.setText("Mood");
     }
 
     @Override
