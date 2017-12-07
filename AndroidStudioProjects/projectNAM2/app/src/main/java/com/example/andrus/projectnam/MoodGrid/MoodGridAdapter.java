@@ -59,13 +59,13 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showDetailFragment(windows[getAdapterPosition()]);
+                    openDetailFragmentAndPass(windows[getAdapterPosition()]);
                 }
             });
         }
     }
 
-    private void showDetailFragment(String window) {
+    private void openDetailFragmentAndPass(String window) {
         MoodDetailFragment fragment = MoodDetailFragment.newInstance(window);
         FragmentManager manager = mainActivity.getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
