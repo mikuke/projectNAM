@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MoodGridFragment extends Fragment {
+public class MoodGridFragment extends Fragment implements MoodGridInterface {
     @BindView(R.id.fragmentMainScreen_recyclerView)
     RecyclerView mainRecyclerView;
     RecyclerView.LayoutManager mainLayoutManager;
@@ -41,5 +41,20 @@ public class MoodGridFragment extends Fragment {
         mainAdapter = new MoodGridAdapter(windows, (MainActivity) getActivity());
         mainRecyclerView.setLayoutManager(mainLayoutManager);
         mainRecyclerView.setAdapter(mainAdapter);
+    }
+
+    @Override
+    public void setGridLogoAndText() {
+        hideProgressBar();
+    }
+
+    @Override
+    public void hideProgressBar() {
+
+    }
+
+    @Override
+    public void showProgressBar() {
+
     }
 }
