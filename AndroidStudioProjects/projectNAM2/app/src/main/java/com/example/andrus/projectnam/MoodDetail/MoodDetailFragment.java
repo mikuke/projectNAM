@@ -1,4 +1,4 @@
-package com.example.andrus.projectnam.DetailScreen;
+package com.example.andrus.projectnam.MoodDetail;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import com.example.andrus.projectnam.R;
 
 
-public class DetailScreenFragment extends Fragment {
+public class MoodDetailFragment extends Fragment {
 
     private String iconText;
 
-    public static DetailScreenFragment newInstance(String iconText) {
-        DetailScreenFragment fragment = new DetailScreenFragment();
+    public static MoodDetailFragment newInstance(String iconText) {
+        MoodDetailFragment fragment = new MoodDetailFragment();
         fragment.iconText = iconText;
         return fragment;
     }

@@ -1,4 +1,4 @@
-package com.example.andrus.projectnam.MainScreen;
+package com.example.andrus.projectnam.MoodGrid;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.andrus.projectnam.DetailScreen.DetailScreenFragment;
+import com.example.andrus.projectnam.MoodDetail.MoodDetailFragment;
 import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
 
@@ -17,11 +17,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainScreenGridAdapter extends RecyclerView.Adapter<MainScreenGridAdapter.GridView> {
+public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridView> {
     private String[] windows;
     private MainActivity mainActivity;
 
-    MainScreenGridAdapter(String[] windows, MainActivity mainActivity) {
+    MoodGridAdapter(String[] windows, MainActivity mainActivity) {
         this.windows = windows;
         this.mainActivity = mainActivity;
     }
@@ -66,7 +66,7 @@ public class MainScreenGridAdapter extends RecyclerView.Adapter<MainScreenGridAd
     }
 
     private void showDetailFragment(String window) {
-        DetailScreenFragment fragment = DetailScreenFragment.newInstance(window);
+        MoodDetailFragment fragment = MoodDetailFragment.newInstance(window);
         FragmentManager manager = mainActivity.getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.mainActivity_frameLayout, fragment);

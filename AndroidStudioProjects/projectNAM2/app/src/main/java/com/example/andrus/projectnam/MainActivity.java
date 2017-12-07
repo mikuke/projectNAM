@@ -1,12 +1,11 @@
 package com.example.andrus.projectnam;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.andrus.projectnam.MainScreen.MainScreenFragment;
+import com.example.andrus.projectnam.MoodGrid.MoodGridFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showMainScreenFragment(){
-        MainScreenFragment mainScreenFragment = new MainScreenFragment();
+        MoodGridFragment moodGridFragment = new MoodGridFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
-        transaction.replace(R.id.mainActivity_frameLayout, mainScreenFragment);
+        transaction.replace(R.id.mainActivity_frameLayout, moodGridFragment);
 
         transaction.commit();
     }
