@@ -11,7 +11,7 @@
         android:layout_marginBottom="80dp"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="Second beer for free"
+        android:text="@string/second_beer_for_free"
         android:textColor="@color/darkRed"
         android:textSize="30sp" />
 
@@ -21,30 +21,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/fragmentDetailThirsty_header"
         android:layout_marginBottom="30dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="100dp"
-        android:text="If you stay long enough, you'll get another beer for free!"
-        android:textColor="#000"
-        android:textSize="20sp"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="100dp" />
+        android:text="@string/if_you_stay_long_enough_you_ll_get_another_beer_for_free"
+        android:textColor="#000"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/fragmentDetailThirsty_advertisement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@id/fragmentDetailThirsty_deal"
         android:layout_marginBottom="100dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginLeft="180dp"
         android:layout_marginRight="20dp"
-        android:gravity="end"
-        android:text="Okasteta Siil just 2 min walk"
-        android:textColor="@color/darkRed"
-        android:textSize="20sp"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="180dp"
-        android:layout_marginEnd="20dp" />
+        android:gravity="end"
+        android:text="@string/okasteta_siil_just_2_min_walk"
+        android:textColor="@color/darkRed"
+        android:textSize="20sp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -55,9 +55,9 @@
         android:background="@drawable/button_like_white"
         android:drawableLeft="@drawable/ic_action_name"
         android:drawablePadding="6dp"
-        android:text="I like it!"
-        android:textStyle="bold"
-        android:drawableStart="@drawable/ic_action_name" />
+        android:drawableStart="@drawable/ic_action_name"
+        android:text="@string/i_like_it"
+        android:textStyle="bold" />
 
 
     <!--<com.example.andrus.projectnam.CustomViews.DetailLikeButton-->
