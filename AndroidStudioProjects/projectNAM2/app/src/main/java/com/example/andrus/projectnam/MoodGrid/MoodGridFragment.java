@@ -8,9 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.andrus.projectnam.MainActivity;
+import com.example.andrus.projectnam.Models.Mood;
 import com.example.andrus.projectnam.R;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,9 +24,16 @@ import butterknife.ButterKnife;
 public class MoodGridFragment extends Fragment implements MoodGridInterface {
     @BindView(R.id.fragmentMainScreen_recyclerView)
     RecyclerView mainRecyclerView;
+    @BindView(R.id.fragmentMainScreen_progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.fragmentMainScreen_gridHeader)
+    TextView gridHeader;
+
+    private List<Mood> moodList;
     RecyclerView.LayoutManager mainLayoutManager;
     RecyclerView.Adapter mainAdapter;
-    
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -32,29 +44,34 @@ public class MoodGridFragment extends Fragment implements MoodGridInterface {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        showGrid();
+        if (moodList != null) {
+            setGridLogoAndText(moodList);
+        } else {
+            loading();
+        }
+        new MoodGridPresenter(this).getMoodList();
     }
 
-    private void showGrid() {
-        String[] windows = {"Thirsty", "Hungry", "Sleepy", "Fuel"};
+    @Override
+    public void setGridLogoAndText(List<Mood> moodList) {
+
+        notLoading();
+        this.moodList = moodList;
         mainLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
-        mainAdapter = new MoodGridAdapter(windows, (MainActivity) getActivity());
+        mainAdapter = new MoodGridAdapter(moodList, (MainActivity) getActivity());
         mainRecyclerView.setLayoutManager(mainLayoutManager);
         mainRecyclerView.setAdapter(mainAdapter);
     }
 
     @Override
-    public void setGridLogoAndText() {
-        hideProgressBar();
+    public void notLoading() {
+        progressBar.setVisibility(View.GONE);
+        gridHeader.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void hideProgressBar() {
-
-    }
-
-    @Override
-    public void showProgressBar() {
-
+    public void loading() {
+        progressBar.setVisibility(View.VISIBLE);
+        gridHeader.setVisibility(View.GONE);
     }
 }
