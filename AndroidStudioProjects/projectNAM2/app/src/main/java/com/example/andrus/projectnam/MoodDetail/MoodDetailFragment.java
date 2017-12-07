@@ -11,11 +11,11 @@ import com.example.andrus.projectnam.R;
 
 public class MoodDetailFragment extends Fragment {
 
-    private String gridImageText;
+    private int gridTabId;
 
-    public static MoodDetailFragment newInstance(String iconText) {
+    public static MoodDetailFragment newInstance(int iconText) {
         MoodDetailFragment fragment = new MoodDetailFragment();
-        fragment.gridImageText = iconText;
+        fragment.gridTabId = iconText;
         return fragment;
     }
 
@@ -28,6 +28,5 @@ public class MoodDetailFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 }

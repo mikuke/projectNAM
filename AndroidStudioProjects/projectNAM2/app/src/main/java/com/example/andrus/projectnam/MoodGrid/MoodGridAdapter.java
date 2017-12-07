@@ -9,20 +9,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.andrus.projectnam.Models.Mood;
+import com.example.andrus.projectnam.Models.Moods;
 import com.example.andrus.projectnam.MoodDetail.MoodDetailFragment;
 import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridView> {
-    private String[] windows;
+    private List<Mood> category;
     private MainActivity mainActivity;
 
-    MoodGridAdapter(String[] windows, MainActivity mainActivity) {
-        this.windows = windows;
+    MoodGridAdapter(List<Mood> category, MainActivity mainActivity) {
+        this.category = category;
         this.mainActivity = mainActivity;
     }
 
@@ -37,13 +41,15 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
 
     @Override
     public void onBindViewHolder(GridView holder, int position) {
-        holder.moodText
-                .setText(windows[position]);
+        Mood mood = category.get(position);
+        holder.moodText.setText(mood.categoryName);
+//        holder.moodText
+//                .setText(category.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return category.size();
     }
 
     class GridView extends RecyclerView.ViewHolder {
@@ -59,14 +65,14 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    openDetailFragmentAndPass(windows[getAdapterPosition()]);
+                    openDetailFragmentAndPass(category.get(getAdapterPosition()).categoryId);
                 }
             });
         }
     }
 
-    private void openDetailFragmentAndPass(String window) {
-        MoodDetailFragment fragment = MoodDetailFragment.newInstance(window);
+    private void openDetailFragmentAndPass(int id) {
+        MoodDetailFragment fragment = MoodDetailFragment.newInstance(id);
         FragmentManager manager = mainActivity.getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.mainActivity_frameLayout, fragment);
