@@ -59,11 +59,4 @@
         android:text="@string/i_like_it"
         android:textStyle="bold" />
 
-
-    <!--<com.example.andrus.projectnam.CustomViews.DetailLikeButton-->
-    <!--android:id="@+id/fragmentDetailThirsty_buttonIcon"-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:layout_gravity="center" />-->
-
 </RelativeLayout>
