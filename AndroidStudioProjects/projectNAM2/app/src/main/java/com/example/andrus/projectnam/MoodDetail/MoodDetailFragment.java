@@ -11,11 +11,11 @@ import com.example.andrus.projectnam.R;
 
 public class MoodDetailFragment extends Fragment {
 
-    private String iconText;
+    private String gridImageText;
 
     public static MoodDetailFragment newInstance(String iconText) {
         MoodDetailFragment fragment = new MoodDetailFragment();
-        fragment.iconText = iconText;
+        fragment.gridImageText = iconText;
         return fragment;
     }
 
