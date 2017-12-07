@@ -21,8 +21,7 @@ public class MoodGridFragment extends Fragment {
     RecyclerView mainRecyclerView;
     RecyclerView.LayoutManager mainLayoutManager;
     RecyclerView.Adapter mainAdapter;
-
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
