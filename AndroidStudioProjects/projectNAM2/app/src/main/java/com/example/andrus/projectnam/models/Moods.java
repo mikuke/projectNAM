@@ -1,4 +1,4 @@
-package com.example.andrus.projectnam.Models;
+package com.example.andrus.projectnam.models;
 
 
 import java.util.List;

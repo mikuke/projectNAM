@@ -1,4 +1,4 @@
-package com.example.andrus.projectnam.MoodDetail;
+package com.example.andrus.projectnam.mooddetails;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -1,20 +1,24 @@
-package com.example.andrus.projectnam.MoodGrid;
+package com.example.andrus.projectnam.moodgrid;
 
+import android.graphics.Bitmap;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.andrus.projectnam.Models.Mood;
-import com.example.andrus.projectnam.Models.Moods;
-import com.example.andrus.projectnam.MoodDetail.MoodDetailFragment;
+import com.bumptech.glide.Glide;
+import com.example.andrus.projectnam.models.Mood;
+import com.example.andrus.projectnam.mooddetails.MoodDetailFragment;
 import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,8 +47,18 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
     public void onBindViewHolder(GridView holder, int position) {
         Mood mood = category.get(position);
         holder.moodText.setText(mood.categoryName);
-//        holder.moodText
-//                .setText(category.get(position));
+
+
+//        Glide.with(mainActivity)
+//                .load(mood.CategoryLogo)
+//                .asBitmap()
+//                .into(holder.moodIcon);
+        Log.i("adapter", "onBindViewHolder: " + mood.CategoryLogo);
+        byte[] decodedString = Base64.decode(String.valueOf(mood.CategoryLogo), Base64.DEFAULT);
+        Glide.with(mainActivity)
+                .load(decodedString)
+                .asBitmap()
+                .into(holder.moodIcon);
     }
 
     @Override

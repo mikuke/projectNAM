@@ -1,8 +1,8 @@
-package com.example.andrus.projectnam.MoodGrid;
+package com.example.andrus.projectnam.moodgrid;
 
 import android.util.Log;
 
-import com.example.andrus.projectnam.Models.Mood;
+import com.example.andrus.projectnam.models.Mood;
 
 import java.util.List;
 
