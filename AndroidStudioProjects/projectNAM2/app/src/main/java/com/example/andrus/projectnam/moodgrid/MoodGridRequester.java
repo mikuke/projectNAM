@@ -1,5 +1,7 @@
 package com.example.andrus.projectnam.moodgrid;
 
+import android.util.Log;
+
 import com.example.andrus.projectnam.models.Mood;
 import com.example.andrus.projectnam.util.http.APIClient;
 
@@ -17,6 +19,8 @@ class MoodGridRequester {
                 .getService()
                 .getMoodGridIconAndText();
 
+        Log.i("requester", "getServerResponse: "+response);
+
         response.enqueue(new Callback<List<Mood>>() {
             @Override
             public void onResponse(Call<List<Mood>> call, Response<List<Mood>> response) {
@@ -25,7 +29,7 @@ class MoodGridRequester {
 
             @Override
             public void onFailure(Call<List<Mood>> call, Throwable t) {
-                presenter.failedRetrieval();
+                presenter.failedRetrieval(t);
             }
         });
     }

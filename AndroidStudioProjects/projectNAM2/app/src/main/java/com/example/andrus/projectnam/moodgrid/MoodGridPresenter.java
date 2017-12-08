@@ -22,7 +22,7 @@ class MoodGridPresenter {
         moodGrid.setGridLogoAndText(moodList);
     }
 
-    void failedRetrieval() {
-        Log.i("presenter", "failedRetrieval: it failed");
+    void failedRetrieval(Throwable t) {
+        Log.i("presenter", "failedRetrieval: " + t);
     }
 }

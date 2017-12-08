@@ -1,6 +1,5 @@
 package com.example.andrus.projectnam.moodgrid;
 
-import android.graphics.Bitmap;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +17,7 @@ import com.example.andrus.projectnam.mooddetails.MoodDetailFragment;
 import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
 
-import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -49,16 +48,14 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
         holder.moodText.setText(mood.categoryName);
 
 
-//        Glide.with(mainActivity)
-//                .load(mood.CategoryLogo)
-//                .asBitmap()
-//                .into(holder.moodIcon);
-        Log.i("adapter", "onBindViewHolder: " + mood.CategoryLogo);
-        byte[] decodedString = Base64.decode(String.valueOf(mood.CategoryLogo), Base64.DEFAULT);
+        //TODO remove this.
+        byte[] decodedString = Base64.decode(String.valueOf(mood.categoryLogo), Base64.DEFAULT);
+
         Glide.with(mainActivity)
                 .load(decodedString)
                 .asBitmap()
                 .into(holder.moodIcon);
+
     }
 
     @Override
