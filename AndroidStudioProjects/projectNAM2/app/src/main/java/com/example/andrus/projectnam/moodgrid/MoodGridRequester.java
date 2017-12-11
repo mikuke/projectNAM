@@ -2,7 +2,7 @@ package com.example.andrus.projectnam.moodgrid;
 
 import android.util.Log;
 
-import com.example.andrus.projectnam.models.Mood;
+import com.example.andrus.projectnam.models.Category;
 import com.example.andrus.projectnam.util.http.APIClient;
 
 import java.util.List;
@@ -14,21 +14,21 @@ import retrofit2.Response;
 class MoodGridRequester {
 
     static void getServerResponse(final MoodGridPresenter presenter) {
-        Call<List<Mood>> response = APIClient
+        Call<List<Category>> response = APIClient
                 .getInstance()
                 .getService()
                 .getMoodGridIconAndText();
 
         Log.i("requester", "getServerResponse: "+response);
 
-        response.enqueue(new Callback<List<Mood>>() {
+        response.enqueue(new Callback<List<Category>>() {
             @Override
-            public void onResponse(Call<List<Mood>> call, Response<List<Mood>> response) {
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
                 presenter.successfulRetrieval(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Mood>> call, Throwable t) {
+            public void onFailure(Call<List<Category>> call, Throwable t) {
                 presenter.failedRetrieval(t);
             }
         });

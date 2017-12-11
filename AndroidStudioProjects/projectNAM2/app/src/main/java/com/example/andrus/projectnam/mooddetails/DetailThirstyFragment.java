@@ -8,20 +8,15 @@ import android.view.ViewGroup;
 
 import com.example.andrus.projectnam.R;
 
-public class MoodDetailFragment extends Fragment {
-    public static MoodDetailFragment newInstance() {
-        return new MoodDetailFragment();
+public class DetailThirstyFragment extends Fragment {
+
+    public static DetailThirstyFragment newInstance() {
+        return new DetailThirstyFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_detail_viewpager, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        new DetailViewPagerFragment();
+        return inflater.inflate(R.layout.fragment_detail_thirsty, container, false);
     }
 }

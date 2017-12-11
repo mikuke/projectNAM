@@ -4,7 +4,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.andrus.projectnam.models.Mood;
-import com.example.andrus.projectnam.mooddetails.MoodDetailFragment;
+import com.example.andrus.projectnam.models.Category;
+import com.example.andrus.projectnam.mooddetails.DetailViewPagerFragment;
 import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,10 +23,10 @@ import butterknife.ButterKnife;
 
 
 public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridView> {
-    private List<Mood> category;
+    private List<Category> category;
     private MainActivity mainActivity;
 
-    MoodGridAdapter(List<Mood> category, MainActivity mainActivity) {
+    MoodGridAdapter(List<Category> category, MainActivity mainActivity) {
         this.category = category;
         this.mainActivity = mainActivity;
     }
@@ -44,16 +42,16 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
 
     @Override
     public void onBindViewHolder(GridView holder, int position) {
-        Mood mood = category.get(position);
+        Category mood = category.get(position);
         holder.moodText.setText(mood.categoryName);
 
 
-        //TODO remove this.
-        byte[] decodedString = Base64.decode(String.valueOf(mood.categoryLogo), Base64.DEFAULT);
+        byte[] imageBytes = Base64.decode(String.valueOf(mood.categoryLogo), Base64.DEFAULT);
 
         Glide.with(mainActivity)
-                .load(decodedString)
+                .load(imageBytes)
                 .asBitmap()
+                .dontAnimate()
                 .into(holder.moodIcon);
 
     }
@@ -83,7 +81,7 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
     }
 
     private void openDetailFragmentAndPass(int id) {
-        MoodDetailFragment fragment = MoodDetailFragment.newInstance(id);
+        DetailViewPagerFragment fragment = DetailViewPagerFragment.newInstance();
         FragmentManager manager = mainActivity.getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.mainActivity_frameLayout, fragment);

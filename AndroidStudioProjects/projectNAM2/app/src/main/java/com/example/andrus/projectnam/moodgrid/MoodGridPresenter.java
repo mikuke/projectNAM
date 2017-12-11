@@ -2,7 +2,7 @@ package com.example.andrus.projectnam.moodgrid;
 
 import android.util.Log;
 
-import com.example.andrus.projectnam.models.Mood;
+import com.example.andrus.projectnam.models.Category;
 
 import java.util.List;
 
@@ -17,9 +17,10 @@ class MoodGridPresenter {
         MoodGridRequester.getServerResponse(this);
     }
 
-    void successfulRetrieval(List<Mood> moodList) {
+    void successfulRetrieval(List<Category> moodList) {
         Log.i("presenter", "successfulRetrieval: Success");
         moodGrid.setGridLogoAndText(moodList);
+
     }
 
     void failedRetrieval(Throwable t) {

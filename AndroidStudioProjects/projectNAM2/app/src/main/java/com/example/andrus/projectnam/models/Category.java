@@ -1,9 +1,7 @@
 package com.example.andrus.projectnam.models;
 
-public class Mood {
+public class Category {
     public int categoryId;
     public String categoryName;
-
-    //TODO change this to byte[]
     public String categoryLogo;
 }

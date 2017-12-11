@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.andrus.projectnam.MainActivity;
-import com.example.andrus.projectnam.models.Mood;
+import com.example.andrus.projectnam.models.Category;
 import com.example.andrus.projectnam.R;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public class MoodGridFragment extends Fragment implements MoodGridInterface {
     @BindView(R.id.fragmentMainScreen_gridHeader)
     TextView gridHeader;
 
-    private List<Mood> moodList;
+    private List<Category> moodList;
     RecyclerView.LayoutManager mainLayoutManager;
     RecyclerView.Adapter mainAdapter;
 
@@ -56,7 +55,7 @@ public class MoodGridFragment extends Fragment implements MoodGridInterface {
     }
 
     @Override
-    public void setGridLogoAndText(List<Mood> moodList) {
+    public void setGridLogoAndText(List<Category> moodList) {
 
         notLoading();
         this.moodList = moodList;
