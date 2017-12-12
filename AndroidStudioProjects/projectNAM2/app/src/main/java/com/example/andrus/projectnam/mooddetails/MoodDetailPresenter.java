@@ -1,18 +1,24 @@
 package com.example.andrus.projectnam.mooddetails;
 
+import android.util.Log;
+
 import com.example.andrus.projectnam.models.DetailMood;
 
-import java.util.List;
-
-public class MoodDetailPresenter {
+class MoodDetailPresenter {
     private MoodDetailInterface detailInterface;
+    public String TAG = "Bilbo";
 
-    void getViewData(MoodDetailInterface detailInterface) {
+    MoodDetailPresenter(MoodDetailInterface detailInterface) {
         this.detailInterface = detailInterface;
+    }
+
+    void getViewData() {
+        Log.i(TAG, "getViewData:");
         MoodDetailRequester.getResponse(this);
     }
 
     void successfulResponse(DetailMood detailMoods) {
+        Log.i(TAG, "successfulResponse:");
         detailInterface.setDetailText(detailMoods);
     }
 

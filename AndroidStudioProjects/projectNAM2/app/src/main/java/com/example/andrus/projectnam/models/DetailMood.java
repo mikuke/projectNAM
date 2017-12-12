@@ -5,8 +5,8 @@ import java.util.List;
 
 public class DetailMood {
     public int offerId;
-    public Category category;
-    public Array company;
+    public CategoryWithArray category;
+    public Company company;
     public int companyId;
     public String companyCode;
     public String companyName;
@@ -14,5 +14,5 @@ public class DetailMood {
     public String companyPhone;
     public byte[] companyLogo;
     public String offerTitle;
-    public List<OfferListByCategory> OfferListBycategory;
+    public List<OfferListByCategory> OfferListByCategory;
 }
