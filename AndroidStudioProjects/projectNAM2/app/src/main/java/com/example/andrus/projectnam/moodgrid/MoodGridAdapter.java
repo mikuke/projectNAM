@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.andrus.projectnam.models.Category;
-import com.example.andrus.projectnam.mooddetails.DetailViewPagerFragment;
 import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
+import com.example.andrus.projectnam.models.Category;
+import com.example.andrus.projectnam.mooddetails.DetailViewPagerFragment;
 
 import java.util.List;
 
@@ -23,11 +24,11 @@ import butterknife.ButterKnife;
 
 
 public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridView> {
-    private List<Category> category;
+    private List<Category> categoryList;
     private MainActivity mainActivity;
 
     MoodGridAdapter(List<Category> category, MainActivity mainActivity) {
-        this.category = category;
+        this.categoryList = category;
         this.mainActivity = mainActivity;
     }
 
@@ -42,12 +43,11 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
 
     @Override
     public void onBindViewHolder(GridView holder, int position) {
-        Category mood = category.get(position);
-        holder.moodText.setText(mood.categoryName);
+        Category category = categoryList.get(position);
+        holder.moodText.setText(category.categoryName);
 
 
-        byte[] imageBytes = Base64.decode(String.valueOf(mood.categoryLogo), Base64.DEFAULT);
-
+        byte[] imageBytes = Base64.decode(String.valueOf(category.categoryLogo), Base64.DEFAULT);
         Glide.with(mainActivity)
                 .load(imageBytes)
                 .asBitmap()
@@ -58,7 +58,7 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
 
     @Override
     public int getItemCount() {
-        return category.size();
+        return categoryList.size();
     }
 
     class GridView extends RecyclerView.ViewHolder {
@@ -74,7 +74,7 @@ public class MoodGridAdapter extends RecyclerView.Adapter<MoodGridAdapter.GridVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    openDetailFragmentAndPass(category.get(getAdapterPosition()).categoryId);
+                    openDetailFragmentAndPass(categoryList.get(getAdapterPosition()).categoryId);
                 }
             });
         }

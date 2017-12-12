@@ -1,7 +1,5 @@
 package com.example.andrus.projectnam.moodgrid;
 
-import android.util.Log;
-
 import com.example.andrus.projectnam.models.Category;
 import com.example.andrus.projectnam.util.http.APIClient;
 
@@ -17,9 +15,7 @@ class MoodGridRequester {
         Call<List<Category>> response = APIClient
                 .getInstance()
                 .getService()
-                .getMoodGridIconAndText();
-
-        Log.i("requester", "getServerResponse: "+response);
+                .getGridList();
 
         response.enqueue(new Callback<List<Category>>() {
             @Override

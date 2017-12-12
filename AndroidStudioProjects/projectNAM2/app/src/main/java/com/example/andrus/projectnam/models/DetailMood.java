@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DetailMood {
     public int offerId;
-    public List<Category> category;
+    public Category category;
     public Array company;
     public int companyId;
     public String companyCode;
@@ -13,6 +13,6 @@ public class DetailMood {
     public String companyAddress;
     public String companyPhone;
     public byte[] companyLogo;
-    public String offertitle;
+    public String offerTitle;
     public List<OfferListByCategory> OfferListBycategory;
 }

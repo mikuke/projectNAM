@@ -12,8 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.andrus.projectnam.MainActivity;
-import com.example.andrus.projectnam.models.Category;
 import com.example.andrus.projectnam.R;
+import com.example.andrus.projectnam.models.Category;
 
 import java.util.List;
 
@@ -50,7 +50,6 @@ public class MoodGridFragment extends Fragment implements MoodGridInterface {
             setGridLogoAndText(moodList);
         }
         new MoodGridPresenter(this).getMoodList();
-
 
     }
 

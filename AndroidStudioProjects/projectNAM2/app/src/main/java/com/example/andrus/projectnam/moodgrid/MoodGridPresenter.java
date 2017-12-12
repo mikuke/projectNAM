@@ -3,13 +3,14 @@ package com.example.andrus.projectnam.moodgrid;
 import android.util.Log;
 
 import com.example.andrus.projectnam.models.Category;
+import com.example.andrus.projectnam.models.DetailMood;
 
 import java.util.List;
 
 class MoodGridPresenter {
-    private MoodGridFragment moodGrid;
+    private MoodGridInterface moodGrid;
 
-    MoodGridPresenter(MoodGridFragment moodGrid) {
+    MoodGridPresenter(MoodGridInterface moodGrid) {
         this.moodGrid = moodGrid;
     }
 
@@ -18,9 +19,7 @@ class MoodGridPresenter {
     }
 
     void successfulRetrieval(List<Category> moodList) {
-        Log.i("presenter", "successfulRetrieval: Success");
         moodGrid.setGridLogoAndText(moodList);
-
     }
 
     void failedRetrieval(Throwable t) {
