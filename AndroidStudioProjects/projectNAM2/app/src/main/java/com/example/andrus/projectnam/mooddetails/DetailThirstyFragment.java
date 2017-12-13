@@ -1,6 +1,7 @@
 package com.example.andrus.projectnam.mooddetails;
 
 import android.annotation.SuppressLint;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.andrus.projectnam.MainActivity;
 import com.example.andrus.projectnam.R;
 import com.example.andrus.projectnam.models.DetailMood;
 import com.example.andrus.projectnam.models.OfferListByCategory;
@@ -22,7 +24,8 @@ public class DetailThirstyFragment extends Fragment implements MoodDetailInterfa
     TextView detailDeal;
     @BindView(R.id.fragmentDetailThirsty_advertisement)
     TextView detailAdvertisement;
-
+    private Location destination = new Location("destination");
+    private float distance;
 
     public static DetailThirstyFragment newInstance() {
         return new DetailThirstyFragment();
@@ -45,21 +48,36 @@ public class DetailThirstyFragment extends Fragment implements MoodDetailInterfa
     @Override
     public void onResume() {
         super.onResume();
-
     }
 
-    @SuppressLint("SetTextI18n")
+    private void getDistance(OfferListByCategory category) {
+        Location currentLocation = LocationTracker.location;
+        double destLat = category.locationLat;
+        double destLong = category.LocationLong;
+        destination.setLatitude(destLat);
+        destination.setLongitude(destLong);
+        distance = currentLocation.distanceTo(destination);//Meters
+    }
+
     @Override
     public void setDetailText(DetailMood detailList) {
         OfferListByCategory offerList = detailList.OfferListByCategory.get(0);
 
-
         detailHeader.setText(detailList.offerTitle);
         detailDeal.setText(offerList.offerDescription);
-        detailAdvertisement.setText(detailList.companyName + " just ");
+
+        setDistance(detailList);
     }
 
-
-
+    @SuppressLint("SetTextI18n")
+    public void setDistance(DetailMood detailList) {
+        boolean havePermission = new LocationTracker((MainActivity) getActivity()).checkPermissionRequestIfNot();
+        if (havePermission && LocationTracker.location != null) {
+            getDistance(detailList.OfferListByCategory.get(0));
+            detailAdvertisement.setText(detailList.companyName + " just " + distance);
+        } else {
+            detailAdvertisement.setText("No connection");
+        }
+    }
 
 }
