@@ -1,4 +1,4 @@
-package com.example.andrus.projectnam.MoodGrid;
+package com.example.andrus.projectnam.moodgrid;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,8 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.andrus.projectnam.MainActivity;
-import com.example.andrus.projectnam.Models.Mood;
 import com.example.andrus.projectnam.R;
+import com.example.andrus.projectnam.models.Category;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class MoodGridFragment extends Fragment implements MoodGridInterface {
     @BindView(R.id.fragmentMainScreen_gridHeader)
     TextView gridHeader;
 
-    private List<Mood> moodList;
+    private List<Category> moodList;
     RecyclerView.LayoutManager mainLayoutManager;
     RecyclerView.Adapter mainAdapter;
 
@@ -44,16 +44,17 @@ public class MoodGridFragment extends Fragment implements MoodGridInterface {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        if (moodList != null) {
-            setGridLogoAndText(moodList);
-        } else {
+        if (moodList == null) {
             loading();
+        } else {
+            setGridLogoAndText(moodList);
         }
         new MoodGridPresenter(this).getMoodList();
+
     }
 
     @Override
-    public void setGridLogoAndText(List<Mood> moodList) {
+    public void setGridLogoAndText(List<Category> moodList) {
 
         notLoading();
         this.moodList = moodList;
