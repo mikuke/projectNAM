@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
+        android:text="@string/second_beer_for_free"
         android:textColor="@color/darkRed"
         android:textSize="30sp" />
 
@@ -28,6 +29,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:maxWidth="230dp"
+        android:text="@string/if_you_stay_long_enough_you_ll_get_another_beer_for_free"
         android:textColor="#000"
         android:textSize="20sp" />
 
@@ -42,11 +44,11 @@
         android:layout_marginRight="20dp"
         android:gravity="end"
         android:maxWidth="140dp"
+        android:text="@string/okasteta_siil_just_2_min_walk"
         android:textColor="@color/darkRed"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/fragmentDetailThirsty_likeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
