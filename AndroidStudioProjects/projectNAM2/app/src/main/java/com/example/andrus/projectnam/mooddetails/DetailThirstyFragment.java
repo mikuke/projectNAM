@@ -1,6 +1,5 @@
 package com.example.andrus.projectnam.mooddetails;
 
-import android.annotation.SuppressLint;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,15 +16,18 @@ import com.example.andrus.projectnam.models.OfferListByCategory;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailThirstyFragment extends Fragment implements MoodDetailInterface {
+public class DetailThirstyFragment extends Fragment implements LocationInterface {
     @BindView(R.id.fragmentDetailThirsty_header)
     TextView detailHeader;
     @BindView(R.id.fragmentDetailThirsty_deal)
     TextView detailDeal;
     @BindView(R.id.fragmentDetailThirsty_advertisement)
     TextView detailAdvertisement;
+
     private Location destination = new Location("destination");
-    private float distance;
+    final public static String TAG = "location";
+    DetailMood detailList = null;
+    Location location = null;
 
     public static DetailThirstyFragment newInstance() {
         return new DetailThirstyFragment();
@@ -43,6 +45,9 @@ public class DetailThirstyFragment extends Fragment implements MoodDetailInterfa
         ButterKnife.bind(this, view);
 
         new MoodDetailPresenter(this).getViewData();
+        if (!LocationTracker.tracking) {
+            new LocationTracker((MainActivity) getActivity(), this).initialize();
+        }
     }
 
     @Override
@@ -50,34 +55,36 @@ public class DetailThirstyFragment extends Fragment implements MoodDetailInterfa
         super.onResume();
     }
 
-    private void getDistance(OfferListByCategory category) {
-        Location currentLocation = LocationTracker.location;
-        double destLat = category.locationLat;
-        double destLong = category.LocationLong;
-        destination.setLatitude(destLat);
-        destination.setLongitude(destLong);
-        distance = currentLocation.distanceTo(destination);//Meters
+    @Override
+    public void setDetailText(DetailMood detailList) {
+        this.detailList = detailList;
+        setTextToView();
     }
 
     @Override
-    public void setDetailText(DetailMood detailList) {
-        OfferListByCategory offerList = detailList.OfferListByCategory.get(0);
-
-        detailHeader.setText(detailList.offerTitle);
-        detailDeal.setText(offerList.offerDescription);
-
-        setDistance(detailList);
+    public void locationCallBack(Location location) {
+        this.location = location;
+        setTextToView();
     }
 
-    @SuppressLint("SetTextI18n")
-    public void setDistance(DetailMood detailList) {
-        boolean havePermission = new LocationTracker((MainActivity) getActivity()).checkPermissionRequestIfNot();
-        if (havePermission && LocationTracker.location != null) {
-            getDistance(detailList.OfferListByCategory.get(0));
-            detailAdvertisement.setText(detailList.companyName + " just " + distance);
-        } else {
-            detailAdvertisement.setText("No connection");
+    private void setTextToView() {
+        if (location != null && detailList != null) {
+            OfferListByCategory offerList = detailList.OfferListByCategory.get(0);
+
+            float distance = getDistance(offerList, location);
+
+            detailHeader.setText(detailList.offerTitle);
+            detailDeal.setText(offerList.offerDescription);
+            detailAdvertisement.setText(Float.toString(distance));
         }
+
     }
 
+    private float getDistance(OfferListByCategory category, Location location) {
+        double destLat = category.locationLat;
+        double destLong = category.locationLong;
+        destination.setLatitude(destLat);
+        destination.setLongitude(destLong);
+        return location.distanceTo(destination); //Meters
+    }
 }
